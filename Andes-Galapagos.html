@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Andes + Galápagos — Family Adventure 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.hero{position:relative;height:520px;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.7) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:50px 60px}
+.hero h1{font-size:50px;font-weight:700;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.4);line-height:1.1}
+.hero h2{font-size:18px;color:rgba(255,255,255,0.88);margin-top:8px;font-weight:300}
+.hero p{font-size:14px;color:rgba(255,255,255,0.82);margin-top:12px;max-width:760px}
+.badges{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.3);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;color:#fff}
+.rank-badge{background:#3d1a6e;color:#fff;border:none}
+.stat-bar{display:flex;background:#3d1a6e;color:#fff}
+.stat{flex:1;padding:18px;text-align:center;border-right:1px solid rgba(255,255,255,0.15)}
+.stat:last-child{border-right:none}
+.stat-num{font-size:24px;font-weight:700;color:#f5c842}
+.stat-label{font-size:11px;opacity:0.72;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.score-row{background:rgba(0,0,0,0.08);padding:12px 24px;font-size:12px;color:rgba(255,255,255,0.9);text-align:center}
+.container{max-width:1100px;margin:0 auto;padding:50px 24px}
+.section{margin-bottom:56px}
+.section-title{font-size:26px;font-weight:700;border-bottom:3px solid #6d3a9e;padding-bottom:12px;margin-bottom:24px;color:#3d1a6e}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.highlight-list{list-style:none;padding:0}
+.highlight-list li{padding:11px 0 11px 26px;border-bottom:1px solid #eee;font-size:14px;position:relative}
+.highlight-list li::before{content:"✦";position:absolute;left:0;color:#3d1a6e;font-size:11px;top:13px}
+.photo-grid{display:grid;gap:6px;margin:30px 0}
+.photo-grid.two{grid-template-columns:1fr 1fr}
+.photo-grid.three{grid-template-columns:2fr 1fr 1fr}
+.photo-grid img{width:100%;height:260px;object-fit:cover;border-radius:6px;display:block}
+.stops-grid{display:grid;gap:16px}
+.stops-grid.s2{grid-template-columns:1fr 1fr}
+.stops-grid.s3{grid-template-columns:repeat(3,1fr)}
+.stops-grid.s4{grid-template-columns:repeat(4,1fr)}
+.stops-grid.s5{grid-template-columns:repeat(5,1fr)}
+.stop-card{border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.stop-header{padding:18px;color:#fff}
+.stop-num{font-size:10px;letter-spacing:2px;opacity:0.75}
+.stop-name{font-size:18px;font-weight:700;margin:4px 0 2px}
+.stop-nights{font-size:12px;opacity:0.8}
+.stop-body{padding:12px 18px;background:#fff;font-size:13px;color:#666}
+.avios-box{background:#3d1a6e;color:#fff;padding:24px;border-radius:10px;font-size:14px;line-height:1.9}
+.avios-box strong{color:#f5c842}
+.tip{padding:11px 0 11px 26px;border-bottom:1px solid #eee;font-size:14px;position:relative}
+.tip::before{content:"→";position:absolute;left:0;color:#3d1a6e;font-weight:700}
+.back-btn{display:inline-block;background:#3d1a6e;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;margin-bottom:36px}
+.sp-btn{display:inline-block;background:#0078d4;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;margin-left:10px}
+.footer{background:#3d1a6e;color:#fff;padding:50px;text-align:center;margin-top:60px}
+.footer .quote{font-size:22px;font-style:italic;margin-bottom:12px;max-width:700px;margin-left:auto;margin-right:auto}
+@media(max-width:768px){.two-col,.stops-grid.s3,.stops-grid.s4,.stops-grid.s5{grid-template-columns:1fr}.photo-grid.two,.photo-grid.three{grid-template-columns:1fr}.hero{height:380px}.hero-overlay{padding:28px 22px}.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Machu_Picchu%2C_Peru.jpg/1280px-Machu_Picchu%2C_Peru.jpg" alt="Andes + Galápagos">
+  <div class="hero-overlay">
+    <h1>Andes + Galápagos</h1>
+    <h2>Lima/Sacred Valley → Machu Picchu → Amazon → Galápagos</h2>
+    <p>Three ecosystems, four stops, one of the greatest trips on earth. Inca grandeur, Amazonian wilderness, and the Galápagos Islands where wildlife has no fear of humans. July is Peru's dry season — cloudless skies over Machu Picchu.</p>
+    <div class="badges">
+      <span class="badge rank-badge">#3 of 13 · 41/50</span>
+      <span class="badge">21 Days</span>
+      <span class="badge">Bucket List · 41/50</span>
+      <span class="badge">LATAM/BA → LIM, internal flights</span>
+    </div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="score-row" style="width:100%;padding:14px 30px;font-size:12px;color:rgba(255,255,255,0.9);background:rgba(0,0,0,0.15)">🔀 <strong>Combination:</strong> 10/10 &nbsp;|&nbsp; 🎯 <strong>Activities:</strong> 5/10 &nbsp;|&nbsp; 💰 <strong>Ground Cost:</strong> 10/10 &nbsp;|&nbsp; 🏛 <strong>Authenticity:</strong> 9/10 &nbsp;|&nbsp; ☀️ <strong>Weather:</strong> 7/10 &nbsp;|&nbsp; ✈️ <strong>Logistics:</strong> 0/10</div>
+</div>
+<div class="stat-bar">
+  <div class="stat"><div class="stat-num">41/50</div><div class="stat-label">Score</div></div>
+  <div class="stat"><div class="stat-num">21</div><div class="stat-label">Days</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Stops</div></div>
+  <div class="stat"><div class="stat-num">$22,350</div><div class="stat-label">From (5 pax)</div></div>
+</div>
+<div class="container">
+  <a href="Family-Travel-2026-Index.html" class="back-btn">← All 13 Destinations</a>
+  <a href="https://morphuse.sharepoint.com/sites/Eladtodo/SitePages/Andes-Galapagos.aspx" class="sp-btn" target="_blank">📋 Full SharePoint Itinerary</a>
+  <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:14px;margin-bottom:24px;font-size:13px">⚠️ Logistics score 0 — multiple internal flights, altitude acclimatisation needed. Allow 2 rest days in Cusco.</div>
+  <div class="section two-col">
+    <div>
+      <div class="section-title">Key Highlights</div>
+      <ul class="highlight-list"><li>Machu Picchu at sunrise — Lost City of the Incas</li>
+<li>Galápagos: sea lions play with you underwater</li>
+<li>Blue-footed booby mating dance on Española Island</li>
+<li>Amazon: pink river dolphins + macaw clay lick at dawn</li>
+<li>Sacred Valley Inca ruins — Ollantaytambo fortress</li>
+<li>Giant Galápagos tortoises at Darwin Research Station</li></ul>
+    </div>
+    <div>
+      <div class="section-title">Quick Facts</div>
+      <div style="font-size:14px;line-height:2.3;color:#333">
+        <div><strong style="color:#3d1a6e">Rank:</strong> #3 of 13 · Score 41/50</div>
+        <div><strong style="color:#3d1a6e">Ground cost:</strong> ~$22,350–34,900 (family of 5)</div>
+        <div><strong style="color:#3d1a6e">Avios route:</strong> LATAM/BA → LIM, internal flights</div>
+        <div><strong style="color:#3d1a6e">Duration:</strong> 21 days</div>
+        <div><strong style="color:#3d1a6e">Stops:</strong> Lima → Sacred Valley/Cusco → Machu Picchu → Amazon → Galápagos</div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Photos</div>
+    <div class="photo-grid three"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Galapagos_sea_lion_%28Zalophus_wollebaeki%29.jpg/1280px-Galapagos_sea_lion_%28Zalophus_wollebaeki%29.jpg" alt="" loading="lazy">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Bluefootedbooby.jpg/1280px-Bluefootedbooby.jpg" alt="" loading="lazy">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Amazon_River_from_above.jpg/1280px-Amazon_River_from_above.jpg" alt="" loading="lazy"></div>
+    <div style="font-size:11px;color:#bbb;text-align:right;margin-top:4px">Photos: Wikimedia Commons — CC licensed, free to use</div>
+  </div>
+  <div class="section">
+    <div class="section-title">The Route — 5 Stops</div>
+    <div class="stops-grid s5"><div class="stop-card"><div class="stop-header" style="background:#1a3a5c"><div class="stop-num">STOP 1 OF 5</div><div class="stop-name">Lima</div><div class="stop-nights">(2n)</div></div><div class="stop-body">See full SharePoint itinerary for day-by-day schedule.</div></div><div class="stop-card"><div class="stop-header" style="background:#0d4a6e"><div class="stop-num">STOP 2 OF 5</div><div class="stop-name">Sacred Valley/Cusco</div><div class="stop-nights">(5n)</div></div><div class="stop-body">See full SharePoint itinerary for day-by-day schedule.</div></div><div class="stop-card"><div class="stop-header" style="background:#1a5c20"><div class="stop-num">STOP 3 OF 5</div><div class="stop-name">Machu Picchu</div><div class="stop-nights">(4n)</div></div><div class="stop-body">See full SharePoint itinerary for day-by-day schedule.</div></div><div class="stop-card"><div class="stop-header" style="background:#5c1a3a"><div class="stop-num">STOP 4 OF 5</div><div class="stop-name">Amazon</div><div class="stop-nights">(4n)</div></div><div class="stop-body">See full SharePoint itinerary for day-by-day schedule.</div></div><div class="stop-card"><div class="stop-header" style="background:#5c3a00"><div class="stop-num">STOP 5 OF 5</div><div class="stop-name">Galápagos</div><div class="stop-nights">(6n)</div></div><div class="stop-body">See full SharePoint itinerary for day-by-day schedule.</div></div></div>
+  </div>
+  <div class="section two-col">
+    <div>
+      <div class="section-title">Avios Strategy</div>
+      <div class="avios-box">
+        <strong>Route:</strong> LATAM/BA → LIM, internal flights<br/>
+        <strong>Transfer Avios:</strong> avios.com — BA, Qatar, Iberia 1:1<br/>
+        <strong>Ground cost:</strong> ~$22,350–34,900 before flights<br/>
+        <strong>Book:</strong> 355 days ahead for July availability
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Family Tips</div>
+      <div class="tip">Book Avios flights immediately — July peak seats sell fast on all routes.</div>
+      <div class="tip">Travel insurance with medical evacuation cover is non-negotiable.</div>
+      <div class="tip">Book key activities 3–6 months ahead — July peak sells out everywhere.</div>
+      <div class="tip">Open the SharePoint version for the full day-by-day itinerary and cost breakdown.</div>
+      <div class="tip">Budget carefully — totals shown are mid-range. Luxury adds 50–100%.</div>
+    </div>
+  </div>
+</div>
+<div class="footer" style="background:#3d1a6e">
+  <div class="quote">&ldquo;Three ecosystems. Zero fear from wildlife. The most biodiverse trip on earth — done.&rdquo;</div>
+  <div style="font-size:12px;opacity:0.55;margin-top:14px">21 days · Family of 5 · July 2026 · Morphuse Group</div>
+</div>
+</body>
+</html>
