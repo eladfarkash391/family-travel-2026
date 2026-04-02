@@ -56,7 +56,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 </head>
 <body>
 <div class="hero">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/View_of_Table_Mountain_from_Signal_Hill_1.jpg/1280px-View_of_Table_Mountain_from_Signal_Hill_1.jpg" alt="Southern Africa Epic">
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="0" alt="Southern Africa Epic">
   <div class="hero-overlay">
     <h1>Southern Africa Epic</h1>
     <h2>Cape Town &#8594; Garden Route &#8594; Kruger &#8594; Victoria Falls</h2>
@@ -105,9 +105,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   </div>
   <div class="section">
     <div class="section-title">Photos</div>
-    <div class="photo-grid three"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Male_Lion_and_Cub_Chitwa_South_Africa_Luca_Galuzzi_2004_edit1.jpg/1280px-Male_Lion_and_Cub_Chitwa_South_Africa_Luca_Galuzzi_2004_edit1.jpg" alt="" loading="lazy">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Victoria_Falls_Bridge%2C_Africa_092.jpg" alt="" loading="lazy">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Meiringspoort%2C_South_Africa_%284029374422%29.jpg/1280px-Meiringspoort%2C_South_Africa_%284029374422%29.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid three"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="1" alt="" loading="lazy">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="2" alt="" loading="lazy">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="3" alt="" loading="lazy"></div>
     <div style="font-size:11px;color:#bbb;text-align:right;margin-top:4px">Photos: Wikimedia Commons &#8212; CC licensed, free to use</div>
   </div>
   <div class="section">
@@ -138,5 +138,28 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   <div class="quote">&ldquo;From the Cape of Good Hope to Victoria Falls. Southern Africa at its most dramatic.&rdquo;</div>
   <div style="font-size:12px;opacity:0.55;margin-top:14px">21 days &#183; Family of 5 &#183; July 2026 &#183; Morphuse Group</div>
 </div>
+<script>
+(async function(){
+  var topics = ["Table Mountain", "Lion", "Victoria Falls", "Garden Route"];
+  var imgs = document.querySelectorAll('img[data-wikiidx]');
+  for (var i = 0; i < imgs.length; i++) {
+    var el = imgs[i];
+    var idx = parseInt(el.getAttribute('data-wikiidx'));
+    var topic = topics[idx];
+    if (!topic) continue;
+    try {
+      var r = await fetch('https://en.wikipedia.org/w/api.php?action=query&titles=' +
+        encodeURIComponent(topic) + '&prop=pageimages&format=json&pithumbsize=1200&origin=*');
+      var d = await r.json();
+      var pages = d.query && d.query.pages;
+      var page = pages && Object.values(pages)[0];
+      if (page && page.thumbnail) {
+        el.src = page.thumbnail.source;
+        el.removeAttribute('data-wikiidx');
+      }
+    } catch(e) {}
+  }
+})();
+</script>
 </body>
 </html>
