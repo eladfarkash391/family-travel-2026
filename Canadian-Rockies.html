@@ -56,7 +56,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 </head>
 <body>
 <div class="hero">
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="0" alt="Canadian Rockies">
+  <img src="https://images.unsplash.com/photo-T0UJEFWU7EE?w=1200&q=85&fit=crop&auto=format" alt="Canadian Rockies">
   <div class="hero-overlay">
     <h1>Canadian Rockies</h1>
     <h2>Calgary/Banff &#8594; Lake Louise/Icefields &#8594; Jasper &#8594; BC Coast/Vancouver</h2>
@@ -105,9 +105,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   </div>
   <div class="section">
     <div class="section-title">Photos</div>
-    <div class="photo-grid three"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="1" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="2" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="3" alt="" loading="lazy"></div>
+    <div class="photo-grid three"><img src="https://images.unsplash.com/photo-Bj_MIJ3vpT4?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-Y6I4VvyN_sA?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-wAnmY9XVKtc?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy"></div>
     <div style="font-size:11px;color:#bbb;text-align:right;margin-top:4px">Photos: Wikimedia Commons &#8212; CC licensed, free to use</div>
   </div>
   <div class="section">
@@ -138,8 +138,5 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   <div class="quote">&ldquo;Four national parks. Grizzlies. Glaciers. Canada delivers something extraordinary every single day.&rdquo;</div>
   <div style="font-size:12px;opacity:0.55;margin-top:14px">21 days &#183; Family of 5 &#183; July 2026 &#183; Morphuse Group</div>
 </div>
-<script>
-(async function(){var topics=["Moraine Lake", "Peyto Lake", "Grizzly bear", "Athabasca Glacier"];var imgs=document.querySelectorAll('img[data-wikiidx]');for(var i=0;i<imgs.length;i++){var el=imgs[i];var idx=parseInt(el.getAttribute('data-wikiidx'));var topic=topics[idx];if(!topic)continue;try{var r=await fetch('https://en.wikipedia.org/w/api.php?action=query&titles='+encodeURIComponent(topic)+'&prop=pageimages&format=json&pithumbsize=1200&origin=*');var d=await r.json();var pages=d.query&&d.query.pages;var page=pages&&Object.values(pages)[0];if(page&&page.thumbnail){el.src=page.thumbnail.source;el.removeAttribute('data-wikiidx');}}catch(e){}}})();
-</script>
 </body>
 </html>
