@@ -56,7 +56,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 </head>
 <body>
 <div class="hero">
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="0" alt="Namibia + Botswana + Vic Falls">
+  <img src="https://images.unsplash.com/photo-JjXgVPmzTAU?w=1200&q=85&fit=crop&auto=format" alt="Namibia + Botswana + Vic Falls">
   <div class="hero-overlay">
     <h1>Namibia + Botswana + Vic Falls</h1>
     <h2>Windhoek/Sossusvlei &#8594; Etosha &#8594; Okavango &#8594; Victoria Falls</h2>
@@ -105,9 +105,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   </div>
   <div class="section">
     <div class="section-title">Photos</div>
-    <div class="photo-grid three"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="1" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="2" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="3" alt="" loading="lazy"></div>
+    <div class="photo-grid three"><img src="https://images.unsplash.com/photo-cYfnzLLmDlI?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-5SRFWNgeSJU?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-qD5hSSfGnOM?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy"></div>
     <div style="font-size:11px;color:#bbb;text-align:right;margin-top:4px">Photos: Wikimedia Commons &#8212; CC licensed, free to use</div>
   </div>
   <div class="section">
@@ -138,8 +138,5 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   <div class="quote">&ldquo;Okavango by mokoro at dawn. Sossusvlei at sunrise. The most remote and wild trip of all.&rdquo;</div>
   <div style="font-size:12px;opacity:0.55;margin-top:14px">21 days &#183; Family of 5 &#183; July 2026 &#183; Morphuse Group</div>
 </div>
-<script>
-(async function(){var topics=["Sossusvlei", "Okavango Delta", "Victoria Falls", "Chobe National Park"];var imgs=document.querySelectorAll('img[data-wikiidx]');for(var i=0;i<imgs.length;i++){var el=imgs[i];var idx=parseInt(el.getAttribute('data-wikiidx'));var topic=topics[idx];if(!topic)continue;try{var r=await fetch('https://en.wikipedia.org/w/api.php?action=query&titles='+encodeURIComponent(topic)+'&prop=pageimages&format=json&pithumbsize=1200&origin=*');var d=await r.json();var pages=d.query&&d.query.pages;var page=pages&&Object.values(pages)[0];if(page&&page.thumbnail){el.src=page.thumbnail.source;el.removeAttribute('data-wikiidx');}}catch(e){}}})();
-</script>
 </body>
 </html>
