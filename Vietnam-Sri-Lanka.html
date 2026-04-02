@@ -56,7 +56,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 </head>
 <body>
 <div class="hero">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Hoi_An_Night_Market.jpg/1280px-Hoi_An_Night_Market.jpg" alt="Vietnam Central + Sri Lanka">
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="0" alt="Vietnam Central + Sri Lanka">
   <div class="hero-overlay">
     <h1>Vietnam Central + Sri Lanka</h1>
     <h2>Hoi An &#8594; Nha Trang &#8594; fly &#8594; Trincomalee &#8594; Arugam Bay</h2>
@@ -105,9 +105,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   </div>
   <div class="section">
     <div class="section-title">Photos</div>
-    <div class="photo-grid three"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ha_Long_bay_%28Vietnam%29.jpg/1280px-Ha_Long_bay_%28Vietnam%29.jpg" alt="" loading="lazy">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Sri_Lankan_Leopard_-_Yala_National_Park.jpg" alt="" loading="lazy">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Culture%2C_Triangle_campaign_-_UNESCO_-_PHOTO0000002098_0000.tiff/lossy-page1-1280px-Culture%2C_Triangle_campaign_-_UNESCO_-_PHOTO0000002098_0000.tiff.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid three"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="1" alt="" loading="lazy">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="2" alt="" loading="lazy">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="3" alt="" loading="lazy"></div>
     <div style="font-size:11px;color:#bbb;text-align:right;margin-top:4px">Photos: Wikimedia Commons &#8212; CC licensed, free to use</div>
   </div>
   <div class="section">
@@ -138,5 +138,28 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   <div class="quote">&ldquo;Lanterns on the river in Hoi An. Whale sharks off Trincomalee. Two countries, one extraordinary trip.&rdquo;</div>
   <div style="font-size:12px;opacity:0.55;margin-top:14px">21 days &#183; Family of 5 &#183; July 2026 &#183; Morphuse Group</div>
 </div>
+<script>
+(async function(){
+  var topics = ["Hoi An", "Ha Long Bay", "Yala National Park", "Sigiriya"];
+  var imgs = document.querySelectorAll('img[data-wikiidx]');
+  for (var i = 0; i < imgs.length; i++) {
+    var el = imgs[i];
+    var idx = parseInt(el.getAttribute('data-wikiidx'));
+    var topic = topics[idx];
+    if (!topic) continue;
+    try {
+      var r = await fetch('https://en.wikipedia.org/w/api.php?action=query&titles=' +
+        encodeURIComponent(topic) + '&prop=pageimages&format=json&pithumbsize=1200&origin=*');
+      var d = await r.json();
+      var pages = d.query && d.query.pages;
+      var page = pages && Object.values(pages)[0];
+      if (page && page.thumbnail) {
+        el.src = page.thumbnail.source;
+        el.removeAttribute('data-wikiidx');
+      }
+    } catch(e) {}
+  }
+})();
+</script>
 </body>
 </html>
