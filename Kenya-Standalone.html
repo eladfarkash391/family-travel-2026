@@ -27,7 +27,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .highlight-list{list-style:none;padding:0}
 .highlight-list li{padding:11px 0 11px 26px;border-bottom:1px solid #eee;font-size:14px;position:relative}
-.highlight-list li::before{content:"&#10022;";position:absolute;left:0;color:#5c1a00;font-size:11px;top:13px}
+.highlight-list li::before{content:"\2726 ";position:absolute;left:0;color:#5c1a00;font-size:11px;top:13px}
 .photo-grid{display:grid;gap:6px;margin:30px 0}
 .photo-grid.two{grid-template-columns:1fr 1fr}
 .photo-grid.three{grid-template-columns:2fr 1fr 1fr}
@@ -46,7 +46,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 .avios-box{background:#5c1a00;color:#fff;padding:24px;border-radius:10px;font-size:14px;line-height:1.9}
 .avios-box strong{color:#f5c842}
 .tip{padding:11px 0 11px 26px;border-bottom:1px solid #eee;font-size:14px;position:relative}
-.tip::before{content:"&#8594;";position:absolute;left:0;color:#5c1a00;font-weight:700}
+.tip::before{content:"\2192 ";position:absolute;left:0;color:#5c1a00;font-weight:700}
 .back-btn{display:inline-block;background:#5c1a00;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;margin-bottom:36px}
 .sp-btn{display:inline-block;background:#0078d4;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;margin-left:10px}
 .footer{background:#5c1a00;color:#fff;padding:50px;text-align:center;margin-top:60px}
@@ -56,7 +56,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 </head>
 <body>
 <div class="hero">
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="0" alt="Kenya Standalone">
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="0" alt="Kenya Standalone">
   <div class="hero-overlay">
     <h1>Kenya Standalone</h1>
     <h2>Nairobi &#8594; Masai Mara &#8594; Amboseli &#8594; Diani Beach</h2>
@@ -105,9 +105,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   </div>
   <div class="section">
     <div class="section-title">Photos</div>
-    <div class="photo-grid three"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="1" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="2" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ccc'/%3E%3C/svg%3E" data-wikiidx="3" alt="" loading="lazy"></div>
+    <div class="photo-grid three"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="1" alt="" loading="lazy">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="2" alt="" loading="lazy">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="3" alt="" loading="lazy"></div>
     <div style="font-size:11px;color:#bbb;text-align:right;margin-top:4px">Photos: Wikimedia Commons &#8212; CC licensed, free to use</div>
   </div>
   <div class="section">
@@ -139,27 +139,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   <div style="font-size:12px;opacity:0.55;margin-top:14px">21 days &#183; Family of 5 &#183; July 2026 &#183; Morphuse Group</div>
 </div>
 <script>
-(async function(){
-  var topics = ["Masai Mara", "Amboseli National Park", "Diani Beach", "Balloon safari"];
-  var imgs = document.querySelectorAll('img[data-wikiidx]');
-  for (var i = 0; i < imgs.length; i++) {
-    var el = imgs[i];
-    var idx = parseInt(el.getAttribute('data-wikiidx'));
-    var topic = topics[idx];
-    if (!topic) continue;
-    try {
-      var r = await fetch('https://en.wikipedia.org/w/api.php?action=query&titles=' +
-        encodeURIComponent(topic) + '&prop=pageimages&format=json&pithumbsize=1200&origin=*');
-      var d = await r.json();
-      var pages = d.query && d.query.pages;
-      var page = pages && Object.values(pages)[0];
-      if (page && page.thumbnail) {
-        el.src = page.thumbnail.source;
-        el.removeAttribute('data-wikiidx');
-      }
-    } catch(e) {}
-  }
-})();
+(async function(){var topics=["Masai Mara", "Amboseli National Park", "Diani Beach", "Balloon safari"];var imgs=document.querySelectorAll('img[data-wikiidx]');for(var i=0;i<imgs.length;i++){var el=imgs[i];var idx=parseInt(el.getAttribute('data-wikiidx'));var topic=topics[idx];if(!topic)continue;try{var r=await fetch('https://en.wikipedia.org/w/api.php?action=query&titles='+encodeURIComponent(topic)+'&prop=pageimages&format=json&pithumbsize=1200&origin=*');var d=await r.json();var pages=d.query&&d.query.pages;var page=pages&&Object.values(pages)[0];if(page&&page.thumbnail){el.src=page.thumbnail.source;el.removeAttribute('data-wikiidx');}}catch(e){}}})();
 </script>
 </body>
 </html>
