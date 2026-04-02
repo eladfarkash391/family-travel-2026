@@ -56,7 +56,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
 </head>
 <body>
 <div class="hero">
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="0" alt="Vietnam Central + Sri Lanka">
+  <img src="https://images.unsplash.com/photo-2d4kRcKXTEM?w=1200&q=85&fit=crop&auto=format" alt="Vietnam Central + Sri Lanka">
   <div class="hero-overlay">
     <h1>Vietnam Central + Sri Lanka</h1>
     <h2>Hoi An &#8594; Nha Trang &#8594; fly &#8594; Trincomalee &#8594; Arugam Bay</h2>
@@ -105,9 +105,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   </div>
   <div class="section">
     <div class="section-title">Photos</div>
-    <div class="photo-grid three"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="1" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="2" alt="" loading="lazy">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23ddd'/%3E%3C/svg%3E" data-wikiidx="3" alt="" loading="lazy"></div>
+    <div class="photo-grid three"><img src="https://images.unsplash.com/photo-mrBG1zWr73M?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-ePeTsqcyUiI?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy">
+<img src="https://images.unsplash.com/photo-FmUx8z_Tz4A?w=1200&q=85&fit=crop&auto=format" alt="" loading="lazy"></div>
     <div style="font-size:11px;color:#bbb;text-align:right;margin-top:4px">Photos: Wikimedia Commons &#8212; CC licensed, free to use</div>
   </div>
   <div class="section">
@@ -138,8 +138,5 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f5f5;color:#333;l
   <div class="quote">&ldquo;Lanterns on the river in Hoi An. Whale sharks off Trincomalee. Two countries, one extraordinary trip.&rdquo;</div>
   <div style="font-size:12px;opacity:0.55;margin-top:14px">21 days &#183; Family of 5 &#183; July 2026 &#183; Morphuse Group</div>
 </div>
-<script>
-(async function(){var topics=["Hoi An", "Ha Long Bay", "Yala National Park", "Sigiriya"];var imgs=document.querySelectorAll('img[data-wikiidx]');for(var i=0;i<imgs.length;i++){var el=imgs[i];var idx=parseInt(el.getAttribute('data-wikiidx'));var topic=topics[idx];if(!topic)continue;try{var r=await fetch('https://en.wikipedia.org/w/api.php?action=query&titles='+encodeURIComponent(topic)+'&prop=pageimages&format=json&pithumbsize=1200&origin=*');var d=await r.json();var pages=d.query&&d.query.pages;var page=pages&&Object.values(pages)[0];if(page&&page.thumbnail){el.src=page.thumbnail.source;el.removeAttribute('data-wikiidx');}}catch(e){}}})();
-</script>
 </body>
 </html>
