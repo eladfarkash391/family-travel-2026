@@ -1,0 +1,83 @@
+name: Prune Backup Branches
+
+# Clears merged `backup-*` branches off origin, weekly.
+#
+# DROP-IN: this file and scripts/prune-backup-branches{,.test}.sh carry no
+# reference to any repository, language or toolchain -- they need git, date,
+# grep and printf, no node and no install step -- so copying the three into any
+# repository is the whole installation. The base branch comes from the repo's
+# own default, not a hardcoded `main`.
+#
+# WHY A WORKFLOW AND NOT A SESSION: CLAUDE.md requires a backup branch pushed to
+# origin before any `git reset --hard`, and that push is load-bearing — a cloud
+# session's container is ephemeral, so a local-only backup dies with it. The
+# branches therefore keep accumulating (44 by 22/09/2026) and nothing was
+# clearing them. A Claude Code session cannot: its git credential is scoped to
+# its own working branch, so a delete push returns 403, and the GitHub connector
+# has no delete-branch action. The repository does the deleting with its own
+# GITHUB_TOKEN; a session can only ask this workflow to run.
+#
+# The selection rules, the guards and the proof they bite live in
+# scripts/prune-backup-branches.sh and its .test.sh. Nothing unique can be
+# caught: a branch is only deleted when every one of its commits is already
+# reachable from main.
+
+on:
+  schedule:
+    - cron: "0 4 * * 0"   # Sundays 04:00 UTC — clear of the 06:00 sync and the deploys
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List what would be deleted without deleting it"
+        type: boolean
+        default: false
+      grace_days:
+        description: "Keep backups newer than this many days"
+        default: "14"
+
+concurrency:
+  group: prune-backup-branches
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # deleting a branch is a write to refs; nothing else is needed
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # fetch-depth: 0 IS PART OF THE RULE, NOT AN OPTIMISATION.
+          # On a shallow clone `git merge-base --is-ancestor` walks history it
+          # does not have and answers "not merged" for everything. The script
+          # refuses outright rather than trust that answer, so a shallow
+          # checkout here fails the job instead of silently pruning nothing.
+          fetch-depth: 0
+
+      # The guards are re-proved in the same job, immediately before anything
+      # is deleted — not at build time, where a janitor's regression would tax
+      # every production deploy for no gain. Builds a throwaway repo and
+      # asserts each guard fires; proven to fail when any one is sabotaged.
+      - name: Prove the guards bite
+        run: ./scripts/prune-backup-branches.test.sh
+
+      - name: Prune
+        env:
+          GRACE_DAYS: ${{ github.event.inputs.grace_days || '14' }}
+          # The repository's OWN default branch, so this file drops into a repo
+          # on `master` unchanged. `actions/checkout` does not set the remote
+          # HEAD ref, so the script's own resolution cannot see it here.
+          BASE: origin/${{ github.event.repository.default_branch }}
+          # Via env, never interpolated straight into the shell: a dispatch
+          # input is data, and data does not belong in a command line.
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
+          if [ "$DRY_RUN" = "true" ]; then
+            ./scripts/prune-backup-branches.sh          | tee out.txt
+          else
+            ./scripts/prune-backup-branches.sh --apply  | tee out.txt
+          fi
+          { echo '```'; cat out.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
