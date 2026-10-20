@@ -1,0 +1,28 @@
+name: Zizmor (workflow security)
+
+# Static analysis of every workflow in this repo: unpinned actions, template
+# injection, pull_request_target misuse, credential persistence, cache
+# poisoning. Added 20/10/2026 (security review, stage 3).
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/**", ".github/dependabot.yml"]
+  pull_request:
+    paths: [".github/workflows/**", ".github/dependabot.yml"]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  zizmor:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write # upload SARIF to the Security tab
+      actions: read
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: zizmorcore/zizmor-action@cc914d7f3750a2d13d75c7f184a1060aa0e9d482 # v0.6.4

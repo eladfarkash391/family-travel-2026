@@ -1,0 +1,28 @@
+name: Gitleaks (secret scan)
+
+# Scans the full git history for committed secrets on every push and PR.
+# Private repos on a personal account get no GitHub secret scanning, so this
+# is the detection layer. Added 20/10/2026 (security review, stage 3).
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * 1" # Mondays 04:17 UTC — catches rule updates against old history
+
+permissions: {}
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0 # full history — the point of the scan
+          persist-credentials: false
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

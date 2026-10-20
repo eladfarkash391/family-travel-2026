@@ -1,0 +1,17 @@
+version: 2
+
+# 7-day cooldown: a freshly published version is not adopted until a week
+# has passed, so a compromised release (tj-actions, Shai Hulud, Trivy) is
+# usually pulled or flagged before it reaches this repo.
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns:
+          - "*"
